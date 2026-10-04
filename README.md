@@ -1,15 +1,22 @@
 # 🌍 Country Knowledge Hub
 
-A Streamlit web app that lets you explore information about countries worldwide.  
-Built with **Python, Streamlit, and REST Countries API v5**.
+A Python + Streamlit project that started as a simple country explorer and has now grown into a **full ETL pipeline** with SQLite integration.  
+Built with **Python, Streamlit, REST Countries API v5, World Bank API, and SQLite**.
 
 ---
 
 ## ✨ Features
-- Fetches live country data using REST Countries API.
-- Handles **API pagination** (solves the 100‑record limit).
-- Displays country details: Name, Capital, Population, Region, Currency.
-- Clean dark‑theme UI with dropdown selection.
+- **Streamlit UI**
+  - Fetches live country data using REST Countries API.
+  - Handles API pagination (solves the 100‑record limit).
+  - Displays country details: Name, Capital, Population, Region, Currency.
+  - Clean dark‑theme UI with dropdown selection.
+
+- **ETL Pipeline**
+  - Extracts country metadata + GDP per capita data.
+  - Transforms and merges datasets on ISO Alpha‑3.
+  - Loads ~245 clean records into SQLite (`countries.db`).
+  - Validated against World Bank data (India’s GDP per capita 2025 matches).
 
 ---
 
@@ -33,10 +40,17 @@ Built with **Python, Streamlit, and REST Countries API v5**.
    ```bash
    streamlit run app.py
 
+6. ETL Pipeline:
+   ```bash
+   python extract.py
+   python transform.py
+
 ## 🛠️ Tech Stack
 Streamlit for UI
 httpx for API calls
 dotenv for environment variables
-REST Countries API v5
+SQLite for local database storage
+REST Countries API v5 + World Bank API
+
 
 
